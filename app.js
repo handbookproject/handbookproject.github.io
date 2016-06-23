@@ -1,4 +1,4 @@
-var api = 'http://github.com/handbookproject/learninghub/contents/';
+var api = 'https://github.com/handbookproject/learninghub/contents/';
 
 var back = '?client_id=e1ef2a75f08bb92c2994&client_secret=f056f7a7661acbc1c4474adbedfbfb88d99c59c0';
 
