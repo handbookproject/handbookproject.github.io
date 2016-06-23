@@ -1,10 +1,11 @@
 var api = 'https://api.github.com/repos/handbookproject/learninghub/contents/';
 
-var back = '?client_id=e1ef2a75f08bb92c2994&client_secret=f056f7a7661acbc1c4474adbedfbfb88d99c59c0';
+var back = '?client_id=e1ef2a75f08bb92c2994&client_secret=f056f7a7661acbc1c4474adbedfbfb88d99c59c0'; 
 
 angular.module('handbook',[])
 
 .controller('ExploreController', function($scope, $http) {
+    $scope.task = 'Train';
     $scope.path = '';
     $scope.subTopics = [];
     $scope.books = [];
@@ -17,6 +18,20 @@ angular.module('handbook',[])
             for(var i = 0; i < response.length; i++) {
                 if(response[i].type == 'dir') $scope.subTopics.push(response[i]);
                 else if(response[i].type == 'file') $scope.books.push(response[i]);
+            }
+            if($scope.subTopics) {
+                $scope.subTopics.sort(function(a,b) {
+                    if(+a.name.split('.')[0] > +b.name.split('.')[0]) return 1;
+                    if(+a.name.split('.')[0] < +b.name.split('.')[0]) return -1;
+                    return 0;
+                });
+            }
+            if($scope.books) {
+                $scope.books.sort(function(a,b) {
+                    if(+a.name.split('.')[0] > +b.name.split('.')[0]) return 1;
+                    if(+a.name.split('.')[0] < +b.name.split('.')[0]) return -1;
+                    return 0;
+                });
             }
             $scope.showContents = true;
         });
@@ -35,7 +50,6 @@ angular.module('handbook',[])
         $scope.showBook = false;
         var type = $scope.file.path.split('.').pop();
         if (type == 'mp4') {
-            console.log($scope.file._links.html);
             $scope.html = $sce.trustAsHtml('<div class="embed-responsive embed-responsive-4by3"><video width="320" height="240" controls><source src="' + $scope.file._links.html.replace('blob','raw') + '" type="video/mp4">Your browser does not support the video tag.</video></div>');
             $scope.showBook = true;
         } else if (type == 'md') {
