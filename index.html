@@ -6,6 +6,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
 </head>
@@ -51,13 +55,13 @@
         <div>
             <div class="row">
 
-                <div style="overflow: scroll" class="col-lg-2 col-md-4">
+                <div style="border-right: 2px dashed" class="col-lg-4 col-md-4 text-center">
 
                     <div ng-hide=" subTopics == '' ">
 
                         <h3>Sub-Topics</h3>
                         <div ng-show="showContents">
-                            <button class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
+                            <button style="overflow: hidden" class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
                           {{ topic.name }}
                       </button>
                         </div>
@@ -69,7 +73,7 @@
 
                         <h3>Books</h3>
                         <div ng-show="showContents">
-                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
+                            <button style="overflow: hidden" class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
                           {{ book.name }}
                       </button>
                         </div>
@@ -81,13 +85,17 @@
                 </div>
 
 
-                <div ng-controller="ReadController" class="col-lg-10 col-md-8">
+                <div ng-controller="ReadController" class="col-lg-8 col-md-8">
 
-                    <h2 class="text-center">{{ file.name }}</h2>
+                    <div style="background-color: white; padding: 10px 20px; border-radius: 5px">
 
-                    <div ng-show="showBook" ng-bind-html="html"></div>
+                        <h2 style="text-decoration: underline" class="text-center">{{ file.name }}</h2>
 
-                    <h3 ng-hide="showBook">Loading</h3>
+                        <div ng-show="showBook" ng-bind-html="html"></div>
+
+                        <h3 ng-hide="showBook">Loading</h3>
+
+                    </div>
 
                 </div>
             </div>
