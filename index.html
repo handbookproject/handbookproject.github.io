@@ -1,5 +1,102 @@
+<!DOCTYPE html>
 <html>
-	<body>
-		<h1> Hello world </h1>
-	</body>
+
+<head>
+    <title> The Handbook Project </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
+</head>
+
+<body ng-app="handbook">
+
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href>handbook</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href>Home</a></li>
+                    <li><a href>Learn More</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="ExploreController" class="container">
+
+        <div class="jumbotron text-center">
+            <h1>handbook</h1>
+
+            <p>Stream videos from the learninghub on the go. Become a superhero.</p>
+        </div>
+
+        <span class="h2 text-center">Current Topic:</span>
+
+        <ul class="breadcrumb">
+            <li ng-if="path != ''"><a href ng-click="setPath('')">handbook</a></li>
+            <li ng-if="path == ''" class="active">handbook</li>
+            <li ng-repeat="dir in path.split('/').slice(0,-1)" ng-click="setPath(path.split('/').slice(0,$index + 1).join('/'))"><a href>{{ dir }}</a></li>
+            <li class="active">{{ path.split('/').pop() }}</li>
+        </ul>
+
+        <div>
+            <div class="row">
+
+                <div style="overflow: scroll" class="col-lg-2 col-md-4">
+
+                    <div ng-hide=" subTopics == '' ">
+
+                        <h3>Sub-Topics</h3>
+                        <div ng-show="showContents">
+                            <button class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
+                          {{ topic.name }}
+                      </button>
+                        </div>
+                        <h4 ng-hide="showContents">Loading</h4>
+
+                    </div>
+
+                    <div ng-hide=" books == '' ">
+
+                        <h3>Books</h3>
+                        <div ng-show="showContents">
+                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
+                          {{ book.name }}
+                      </button>
+                        </div>
+                        <h4 ng-hide="showContents">Loading</h4>
+
+                    </div>
+
+
+                </div>
+
+
+                <div ng-controller="ReadController" class="col-lg-10 col-md-8">
+
+                    <h2 class="text-center">{{ file.name }}</h2>
+
+                    <div ng-show="showBook" ng-bind-html="html"></div>
+
+                    <h3 ng-hide="showBook">Loading</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
 </html>
