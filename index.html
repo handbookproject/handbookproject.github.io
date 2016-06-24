@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css">
+
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body ng-app="handbook" ng-controller="ExploreController">
 
-    <div class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href>handbook</a>
@@ -29,7 +31,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container">
 
@@ -42,13 +44,18 @@
             </select>
         </div>
 
-        <div class="jumbotron text-center">
+        <header class="jumbotron text-center">
             <h1>Handbook</h1>
 
             <p>Watch the videos from Learning Hub on the go. Become a superhero.</p>
-        </div>
+        </header>
 
-        <span class="h2 text-center">Current Topic:</span>
+        <blockquote>
+            <p>Give me six hours to chop down a tree and I will spend the first four sharpening the axe.</p>
+            <small><cite title="Source Title">Abraham Lincoln</cite></small>
+        </blockquote>
+
+        <span class="h2 text-center"><strong>Current Topic:</strong> {{ path.split('/').pop() }} <span ng-if="path == ''">(You know you have to choose one, right?)</span></span>
 
         <ul class="breadcrumb">
             <li ng-if="path != ''"><a href ng-click="setPath('')">handbook</a></li>
@@ -57,16 +64,24 @@
             <li class="active">{{ path.split('/').pop() }}</li>
         </ul>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">Description</div>
+            <div class="panel-body">
+                <span ng-bind-html="desc" ng-show="showDesc"></span>
+                <span ng-hide="showDesc">Serving your description. Just a moment.</span>
+            </div>
+        </div>
+
         <div>
             <div class="row">
 
-                <div style="border-right: 2px dashed" class="col-lg-4 col-md-4 text-center">
+                <aside class="col-lg-4 col-md-4 text-center">
 
                     <div ng-hide=" subTopics == '' ">
 
-                        <h3>Sub-Topics</h3>
+                        <h3>Courses</h3>
                         <div ng-show="showContents">
-                            <button style="overflow: hidden" class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
+                            <button class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
                           {{ topic.name }}
                       </button>
                         </div>
@@ -78,7 +93,7 @@
 
                         <h3>Books</h3>
                         <div ng-show="showContents">
-                            <button style="overflow: hidden" class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
+                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
                           {{ book.name }}
                       </button>
                         </div>
@@ -87,14 +102,14 @@
                     </div>
 
 
-                </div>
+                </aside>
 
 
-                <div ng-controller="ReadController" class="col-lg-8 col-md-8">
+                <main ng-controller="ReadController" class="col-lg-8 col-md-8">
 
                     <div ng-show="task == 'Train'" class="well">
 
-                        <h2 style="text-decoration: underline" class="text-center">{{ file.name }}</h2>
+                        <h2 class="heading">{{ file.name }}</h2>
 
                         <div ng-show="showBook" ng-bind-html="html"></div>
 
@@ -107,19 +122,23 @@
                     </div>
 
                     <div ng-show="task == 'Worship'" class="well">
-                        <h2 style="text-decoration: underline" class="text-center">Our Pantheon</h2>
+                        <h2 class="heading">Our Pantheon</h2>
                         <p>All the staff and wonderful people at AnonOps. You guys might be huge maniacs, but we love you.</p>
                         <p><strong>Case</strong> for all the content and the constant thrashing. Nothing could have been possible without you.</p>
-                        <p><strong>Anakin</strong> for the apps and the will to make a difference. This wouldn't have been posible without you either. Thank you.</p>
+                        <p><strong>Anakin</strong> for the apps and stupidity. It isn't much, but you basically owe me your lives. Thank You.</p>
                         <p><strong>Semtex</strong> for absolutely nothing. You hear me!? Nothing.</p>
-                        <p><strong>ClaudiaD</strong> For your (hive)mind and your m4d script1ng sk1llz</p>
+                        <p><strong>ClaudiaD</strong> For your (hive)mind and your m4d script1ng sk1llz</p><br><br>
                         <p><strong>Pedestal</strong>. I hope that you are out there and safe and happy. Wherever you are, whatever you do.</p>
                     </div>
 
-                </div>
+                </main>
             </div>
         </div>
     </div>
+
+    <footer>
+        Made with <i class="material-icons">favorite</i> by Anonymous. Join #learninghub on the AnonOps IRC.
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
