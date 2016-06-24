@@ -1,0 +1,28 @@
+@media (min-width: 62em) {
+    .col-md-4 {
+        border-right: 2px dashed slategrey;
+    }
+}
+
+.btn {
+    overflow: hidden; 
+    text-align: left;
+}
+
+.heading {
+    text-decoration: underline;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-size: 1.5em;
+    border-top: 1px solid slategrey;
+    margin: 20px 5%;
+    padding: 20px 0px;
+    vertical-align: center;
+}
+
+footer > i {
+    font-size: 0.9em !important;
+} 
