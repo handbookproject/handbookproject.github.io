@@ -64,11 +64,10 @@
             <li class="active">{{ path.split('/').pop() }}</li>
         </ul>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-show="showDesc">
             <div class="panel-heading">Description</div>
             <div class="panel-body">
-                <span ng-bind-html="desc" ng-show="showDesc"></span>
-                <span ng-hide="showDesc">Serving your description. Just a moment.</span>
+                <span ng-bind-html="desc"></span>
             </div>
         </div>
 
@@ -94,7 +93,7 @@
                         <h3>Books</h3>
                         <div ng-show="showContents">
                             <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
-                          {{ book.name }}
+                          {{ book.name | stripExtension }}
                       </button>
                         </div>
                         <h4 ng-hide="showContents">Loading</h4>
@@ -109,7 +108,7 @@
 
                     <div ng-show="task == 'Train'" class="well">
 
-                        <h2 class="heading">{{ file.name }}</h2>
+                        <h2 class="heading">{{ file.name | stripExtension }}</h2>
 
                         <div ng-show="showBook" ng-bind-html="html"></div>
 
