@@ -70,7 +70,7 @@ angular.module('handbook', [])
                 $scope.showBook = true;
             }
             else if (type == 'pdf') {
-                $scope.html = $sce.trustAsHtml('<div class="embed-responsive embed-responsive-4by3"><iframe src="http://docs.google.com/gview?url=' + $scope.file._links.html.replace('blob', 'raw') + '&embedded=true"></iframe></div>');
+                $scope.html = $sce.trustAsHtml('<div class="embed-responsive embed-responsive-4by3"><iframe src="https://docs.google.com/gview?url=' + $scope.file._links.html.replace('blob', 'raw') + '&embedded=true"></iframe></div>');
                 $scope.showBook = true;
             }
             else if (type == 'md') {
