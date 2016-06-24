@@ -49,8 +49,7 @@ angular.module('handbook', [])
                 $scope.desc = $sce.trustAsHtml(data);
                 $scope.showDesc = true;
             }).error(function() {
-                $scope.desc = $sce.trustAsHtml('<p>You know what the description is? That there is no description. Have a nice day.</p>');
-                $scope.showDesc = true;
+                $scope.showDesc = false;
             });
         };
         $scope.setPath = function (path) {
@@ -69,7 +68,12 @@ angular.module('handbook', [])
             if (type == 'mp4') {
                 $scope.html = $sce.trustAsHtml('<div class="embed-responsive embed-responsive-4by3"><video width="320" height="240" controls><source src="' + $scope.file._links.html.replace('blob', 'raw') + '" type="video/mp4">Your browser does not support the video tag.</video></div>');
                 $scope.showBook = true;
-            } else if (type == 'md') {
+            }
+            else if (type == 'pdf') {
+                $scope.html = $sce.trustAsHtml('<div class="embed-responsive embed-responsive-4by3"><iframe src="http://docs.google.com/gview?url=' + $scope.file._links.html.replace('blob', 'raw') + '&embedded=true"></iframe></div>');
+                $scope.showBook = true;
+            }
+            else if (type == 'md') {
 
                 $http({
                     method: 'GET',
@@ -92,4 +96,10 @@ angular.module('handbook', [])
             $scope.getFile();
         };
         $rootScope.setFile({ path: 'README.md', name: 'README.md' });
+    })
+    
+    .filter('stripExtension', function() {
+        return function(input) {
+            return input.split('.').slice(0,-1).join('.');
+        }
     });
