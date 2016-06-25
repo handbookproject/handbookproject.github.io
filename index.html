@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css">
 
     <link rel="stylesheet" href="./style.css">
-    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAACPAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/PDw8/yAgIP9BQUH/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAjwAAAP8AAAD/AAAA/wAAAP8AAAD/Tk5O/6ioqP85OTn/v7+//1lZWf8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAI8AAAD/AAAA/wAAAP8AAAD/JCQk/6Kiov/R0dH/SEhI/+Tk5P+6urr/Kysr/wAAAP8AAAD/AAAA/wAAAP8AAACPAAAA/wAAAP8AAAD/AAAA/1ZWVv+np6f/29vb/42Njf/j4+P/6enp/3BwcP8BAQH/AAAA/wAAAP8AAAD/AAAAjwAAAP8AAAD/AAAA/0JCQv+FhYX/X19f/3Jycv+Ghob/aGho/4yMjP+cnJz/QUFB/wAAAP8AAAD/AAAA/wAAAI8AAAD/AAAA/wUFBf9jY2P/b29v/5OTk/95eXn/o6Oj/7Gxsf+tra3/fn5+/2tra/8ICAj/AAAA/wAAAP8AAACPAAAA/wAAAP8nJyf/goKC/6Wlpf+ysrL/VlZW/+bm5v/o6Oj/3t7e/6Ojo/+Ghob/GRkZ/wAAAP8AAAD/AAAAjwAAAP8AAAD/OTk5/8bGxv/39/f/7Ozs/2ZmZv/b29v/9fX1//39/f/9/f3/5OTk/09PT/8AAAD/AAAA/wAAAI8AAAD/AAAA/2JiYv/MzMz/19fX/9nZ2f+EhIT/2dnZ//7+/v/j4+P/5eXl/+np6f9ycnL/AAAA/wAAAP8AAACPAAAA/wAAAP9sbGz/jY2N/zg4OP9eXl7/ZGRk/97e3v/FxcX/ampq/0VFRf+goKD/Z2dn/wAAAP8AAAD/AAAAjwAAAP8AAAD/aWlp//j4+P/c3Nz/rKys/319ff/9/f3/l5eX/6mpqf/a2tr/+/v7/21tbf8AAAD/AAAA/wAAAI8AAAD/AAAA/1VVVf/e3t7/mJiY/1ZWVv+RkZH//v7+/5CQkP9QUFD/kpKS/9/f3/9cXFz/AAAA/wAAAP8AAACPAAAA/wAAAP84ODj/6+vr/9bW1v/W1tb//v7+///////+/v7/1dXV/9HR0f/v7+//RERE/wAAAP8AAAD/AAAAjwAAAP8AAAD/EBAQ/6ioqP/9/f3//v7+//7+/v///////v7+//7+/v/+/v7/tLS0/xkZGf8AAAD/AAAA/wAAAI8AAAD/AAAA/wAAAP8fHx//Z2dn/5eXl/+zs7P/vb29/7e3t/+bm5v/a2tr/yYmJv8AAAD/AAAA/wAAAP8AAABPAAAAjwAAAI8AAACPAAAAjwAAAI8BAQGPDAwMjxEREY8ODg6PAwMDjwAAAI8AAACPAAAAjwAAAI8AAACPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA==" rel="icon" type="image/x-icon" />
+
+    <link href="./favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 
 <body ng-app="handbook" ng-controller="ExploreController">
@@ -25,25 +26,29 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href>handbook</a>
             </div>
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href>Home</a></li>
                     <li><a href>Learn More</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Choose Thy Actions. Wisely.
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href ng-click="task = 'Train'"> Train </a></li>
+                            <li><a href ng-click="task = 'Discuss'"> Discuss </a></li>
+                            <li><a href ng-click="task = 'Worship'"> Worship </a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
-
-        <div class="form-group">
-            <label for="task" class="control-label">What do you want to do?</label>
-            <select id="task" class="form-control" ng-model="task">
-                <option>Train</option>
-                <option>Discuss</option>
-                <option>Worship</option>
-            </select>
-        </div>
 
         <header class="jumbotron text-center">
             <h1>Handbook</h1>
@@ -124,11 +129,14 @@
                     <div ng-show="task == 'Worship'" class="well">
                         <h2 class="heading">Our Pantheon</h2>
                         <p>All the staff and wonderful people at AnonOps. You guys might be huge maniacs, but we love you.</p>
-                        <p><strong>Case</strong> for all the content and the constant thrashing. Nothing could have been possible without you.</p>
-                        <p><strong>Anakin</strong> for the apps and the will to make a difference. This wouldn't have been posible without you either. Thank you.</p>
+                        <p><strong>Case</strong> for all the content and the constant thrashing. Nothing could have been possible
+                            without you.</p>
+                        <p><strong>Anakin</strong> for the apps and the will to make a difference. This wouldn't have been posible
+                            without you either. Thank you.</p>
                         <p><strong>Semtex</strong> for absolutely nothing. You hear me!? Nothing.</p>
                         <p><strong>ClaudiaD</strong> For your (hive)mind and your m4d script1ng sk1llz</p>
-                        <p><strong>Pedestal</strong>. I hope that you are out there and safe and happy. Wherever you are, whatever you do.</p>
+                        <p><strong>Pedestal</strong>. I hope that you are out there and safe and happy. Wherever you are, whatever
+                            you do.</p>
                     </div>
 
                 </main>
@@ -140,7 +148,8 @@
         Made with <i class="material-icons">favorite</i> by Anonymous. Join #learninghub on the AnonOps IRC.
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
 
@@ -148,6 +157,7 @@
     <script>
         $.material.init()
     </script>
+
     <script src="app.js"></script>
 </body>
 
