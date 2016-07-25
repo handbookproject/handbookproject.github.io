@@ -97,9 +97,12 @@
 
                         <h3>Books</h3>
                         <div ng-show="showContents">
-                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)">
-                          {{ book.name | stripExtension }}
-                      </button>
+                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() != 'mp4'">
+				{{ book.name | stripExtension }}
+                      	    </button>
+			    <button class="btn btn-raised btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'mp4'">
+				{{ book.name | stripExtension }}
+                      	    </button>
                         </div>
                         <h4 ng-hide="showContents">Loading</h4>
 
