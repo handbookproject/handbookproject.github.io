@@ -85,7 +85,7 @@
 
                         <h3>Courses</h3>
                         <div ng-show="showContents">
-                            <button class="btn btn-block btn-primary" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
+                            <button class="btn btn-block btn-default" ng-repeat="topic in subTopics" ng-click="setPath(topic.path)">
                           {{ topic.name }}
                       </button>
                         </div>
@@ -97,10 +97,16 @@
 
                         <h3>Books</h3>
                         <div ng-show="showContents">
-                            <button class="btn btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() != 'mp4'">
+                            <button class="btn btn-raised btn-block btn-default" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() != 'mp4' && book.name.split('.').pop() != 'pdf' && book.name.split('.').pop() != 'md'">
 				{{ book.name | stripExtension }}
                       	    </button>
-			    <button class="btn btn-raised btn-block btn-primary" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'mp4'">
+			    <button class="btn btn-raised btn-block btn-success" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'mp4'">
+				{{ book.name | stripExtension }}
+                      	    </button>
+			    <button class="btn btn-raised btn-block btn-info" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'pdf'">
+				{{ book.name | stripExtension }}
+                      	    </button>
+			    <button class="btn btn-raised btn-block btn-danger" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'md'">
 				{{ book.name | stripExtension }}
                       	    </button>
                         </div>
