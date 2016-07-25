@@ -60,6 +60,17 @@
             <small><cite title="Source Title">Abraham Lincoln</cite></small>
         </blockquote>
 
+	<div class="panel panel-primary">
+            <div class="panel-heading">Legend</div>
+            <div class="panel-body">
+                <p><b>In case you needed help running around the block, help is here.</b></p>
+                <button class="btn btn-lg btn-default">Folder</button>
+                <button class="btn btn-lg btn-raised btn-success">MP4 file</button>
+                <button class="btn btn-lg btn-raised btn-info">PDF file</button>
+                <button class="btn btn-lg btn-raised btn-danger">Markdown file</button>
+            </div>
+        </div>
+
         <span class="h2 text-center"><strong>Current Topic:</strong> {{ path.split('/').pop() }} <span ng-if="path == ''">(You know you have to choose one, right?)</span></span>
 
         <ul class="breadcrumb">
@@ -73,18 +84,6 @@
             <div class="panel-heading">Description</div>
             <div class="panel-body">
                 <span ng-bind-html="desc"></span>
-            </div>
-        </div>
-
-	<div class="panel panel-primary">
-            <div class="panel-heading">Legend</div>
-            <div class="panel-body">
-                <p>In case you needed help running around the block, help is here.</p>
-                <button class="btn btn-lg btn-default">Topic</button>
-                <button class="btn btn-lg btn-raised btn-default">Book</button>
-                <button class="btn btn-lg btn-raised btn-success">MP4 Book</button>
-                <button class="btn btn-lg btn-raised btn-info">PDF Book</button>
-                <button class="btn btn-lg btn-raised btn-danger">Markdown Book</button>
             </div>
         </div>
 
