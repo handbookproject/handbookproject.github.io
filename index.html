@@ -59,7 +59,19 @@
             <p>Give me six hours to chop down a tree and I will spend the first four sharpening the axe.</p>
             <small><cite title="Source Title">Abraham Lincoln</cite></small>
         </blockquote>
-
+        
+        <button style="float: right;" type="button" class="btn btn-primary btn-fab" data-toggle="modal" data-target="#complete-dialog">
+            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">help_outline</i>
+        </button>
+        
+        <button style="float: left;" ng-if="lastPath == path" class="btn btn-primary btn-fab" disabled>
+            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">arrow_back</i>
+        </button>
+        
+        <button style="float: left;" ng-if="lastPath != path" ng-click="setPath(lastPath)" class="btn btn-primary btn-fab">
+            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">arrow_back</i>
+        </button>
+        
         <span class="h2 text-center"><strong>Current Topic:</strong> {{ path.split('/').pop() }} <span ng-if="path == ''">(You know you have to choose one, right?)</span></span>
 
         <ul class="breadcrumb">
@@ -80,8 +92,7 @@
             <div class="row">
 
                 <aside class="col-lg-4 col-md-4 text-center">
-                    <button style="float: right;" type="button" class="btn btn-primary btn-fab" data-toggle="modal" data-target="#complete-dialog"><i style="font-size: 70px; margin-left: -22px;" class="material-icons">help_outline</i></button>
-                    <div ng-hide=" subTopics == '' " style="clear: both;">
+                    <div ng-hide=" subTopics == '' ">
 
                         <h3>Courses</h3>
                         <div ng-show="showContents">
