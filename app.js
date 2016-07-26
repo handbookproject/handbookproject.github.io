@@ -7,6 +7,7 @@ angular.module('handbook', [])
     .controller('ExploreController', function ($sce, $scope, $http) {
         $scope.task = 'Train';
         $scope.path = '';
+        $scope.lastPath = '';
         $scope.subTopics = [];
         $scope.books = [];
         $scope.showContents = false;
