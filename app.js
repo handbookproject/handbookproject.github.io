@@ -54,6 +54,7 @@ angular.module('handbook', [])
             });
         };
         $scope.setPath = function (path) {
+            $scope.lastPath = $scope.path;
             $scope.path = path;
             $scope.getContents();
         };
