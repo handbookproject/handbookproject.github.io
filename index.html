@@ -61,15 +61,15 @@
         </blockquote>
         
         <button style="float: right;" type="button" class="btn btn-primary btn-fab" data-toggle="modal" data-target="#complete-dialog">
-            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">help_outline</i>
+            <i class="material-icons">help</i>
         </button>
         
-        <button style="float: left;" ng-if="lastPath == path" class="btn btn-primary btn-fab" disabled>
-            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">arrow_back</i>
+        <button style="float: left;" ng-if="path == ''" class="btn btn-primary btn-fab" disabled>
+            <i class="material-icons">arrow_back</i>
         </button>
         
-        <button style="float: left;" ng-if="lastPath != path" ng-click="setPath(lastPath)" class="btn btn-primary btn-fab">
-            <i style="font-size: 69px; margin-left: -22px;" class="material-icons">arrow_back</i>
+        <button style="float: left;" ng-if="path != ''" ng-click="setPath(path.split('/').slice(0,-1).join('/'))" class="btn btn-primary btn-fab">
+            <i class="material-icons">arrow_back</i>
         </button>
         
         <span class="h2 text-center"><strong>Current Topic:</strong> {{ path.split('/').pop() }} <span ng-if="path == ''">(You know you have to choose one, right?)</span></span>
