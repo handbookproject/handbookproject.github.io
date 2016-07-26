@@ -55,21 +55,10 @@
                     Check <a href="https://ghostbin.com/paste/vb4o6">the goldmine</a> for full courses</i></h5>
         </header>
 
-       <!-- <blockquote>
+        <blockquote>
             <p>Give me six hours to chop down a tree and I will spend the first four sharpening the axe.</p>
             <small><cite title="Source Title">Abraham Lincoln</cite></small>
-        </blockquote>-->
-
-	<div class="panel panel-default">
-            <div class="panel-heading">Legend</div>
-            <div class="panel-body">
-               <!-- <p><b>In case you needed help running around the block, help is here.</b></p>-->
-                <button class="btn btn-lg btn-default">Folder</button>
-                <button class="btn btn-lg btn-raised btn-success">MP4 file</button>
-                <button class="btn btn-lg btn-raised btn-info">PDF file</button>
-                <button class="btn btn-lg btn-raised btn-danger">Markdown file</button>
-            </div>
-        </div>
+        </blockquote>
 
         <span class="h2 text-center"><strong>Current Topic:</strong> {{ path.split('/').pop() }} <span ng-if="path == ''">(You know you have to choose one, right?)</span></span>
 
@@ -80,19 +69,19 @@
             <li class="active">{{ path.split('/').pop() }}</li>
         </ul>
 
-        <div class="panel panel-primary" ng-show="showDesc">
+        <div class="panel panel-default" ng-show="showDesc">
             <div class="panel-heading">Description</div>
             <div class="panel-body">
                 <span ng-bind-html="desc"></span>
             </div>
         </div>
-
+        
         <div>
             <div class="row">
 
                 <aside class="col-lg-4 col-md-4 text-center">
-		    
-                    <div ng-hide=" subTopics == '' ">
+                    <button style="float: right;" type="button" class="btn btn-primary btn-fab" data-toggle="modal" data-target="#complete-dialog"><i style="font-size: 70px; margin-left: -22px;" class="material-icons">help_outline</i></button>
+                    <div ng-hide=" subTopics == '' " style="clear: both;">
 
                         <h3>Courses</h3>
                         <div ng-show="showContents">
@@ -109,16 +98,16 @@
                         <h3>Books</h3>
                         <div ng-show="showContents">
                             <button class="btn btn-raised btn-block btn-default" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() != 'mp4' && book.name.split('.').pop() != 'pdf' && book.name.split('.').pop() != 'md'">
-				{{ book.name | stripExtension }}
+				                {{ book.name | stripExtension }}
                       	    </button>
-			    <button class="btn btn-raised btn-block btn-success" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'mp4'">
-				{{ book.name | stripExtension }}
+            			    <button class="btn btn-raised btn-block btn-success" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'mp4'">
+            				    {{ book.name | stripExtension }}
                       	    </button>
-			    <button class="btn btn-raised btn-block btn-info" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'pdf'">
-				{{ book.name | stripExtension }}
+			                <button class="btn btn-raised btn-block btn-info" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'pdf'">
+				                {{ book.name | stripExtension }}
                       	    </button>
-			    <button class="btn btn-raised btn-block btn-danger" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'md'">
-				{{ book.name | stripExtension }}
+            			    <button class="btn btn-raised btn-block btn-danger" ng-repeat="book in books" ng-click="setFile(book)" ng-if="book.name.split('.').pop() == 'md'">
+            				    {{ book.name | stripExtension }}
                       	    </button>
                         </div>
                         <h4 ng-hide="showContents">Loading</h4>
@@ -166,6 +155,28 @@
     <footer>
         Made with <i class="material-icons">favorite</i> by Anonymous. Join #learninghub on the AnonOps IRC.
     </footer>
+    
+    <div style="display: none;" id="complete-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                    <h4 class="modal-title">Legend</h4>
+                </div>
+                <div class="modal-body">
+                    <p>It isn't uncommon for even those most worthy to lose their way among the multicolored books in the Great Library of Alexandria.</p>
+                    <p>But worry not, for the legend stands strong to guide your path to superhero-dom.</p>
+                    <button class="btn btn-lg btn-default">Section</button>
+                    <button class="btn btn-raised btn-success">MP4 Book</button>
+                    <button class="btn btn-raised btn-info">PDF Book</button>
+                    <button class="btn btn-raised btn-danger">MD Book</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Continue your quest</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
